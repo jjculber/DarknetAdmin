@@ -1,10 +1,563 @@
 <html>
-  <head>
-    <title>Darknet Admin Prototype</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    
-  </body>
+<head>
+
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+<h2>DarkNet Admin demo</h2>
+
+<form class="form-horizontal" role="form">
+
+  <div class="form-group">
+    <label for="internal_name" class="col-sm-2 control-label">internal_name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="internal_name" placeholder="internal_name">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="internal_desc" class="col-sm-2 control-label">internal_desc</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="internal_desc" placeholder="internal_desc">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="version" class="col-sm-2 control-label">version</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="version" placeholder="version">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="author" class="col-sm-2 control-label">author</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="author" placeholder="author">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="author_site" class="col-sm-2 control-label">author_site</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="author_site" placeholder="author_site (Optional)">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="author_email" class="col-sm-2 control-label">author_email</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="author_email" placeholder="author_email (Optional)">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="author_public"> author_public
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="author_site_public"> author_site_public
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="author_email_public"> author_email_public
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="start_date" class="col-sm-2 control-label">start_date (Optional)</label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control" id="start_date" placeholder="start_date (Optional)">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="end_date" class="col-sm-2 control-label">end_date (Optional)</label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control" id="end_date" placeholder="end_date (Optional)">
+    </div>
+  </div>
+
+  <div id="activate_skills" class="panel panel-default">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">Skills to activate</div>
+	  <div class="panel-body">
+	    <p><a href="#" class="btn btn-primary" id="add_activate_skill">Add new skill</a></p>
+	  </div>
+
+	  <!-- List group -->
+	<ul class="list-group">
+  	</ul>
+  </div>
+
+  <div class="form-group">
+    <label for="group_size" class="col-sm-2 control-label">group_size</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="group_size" placeholder="group_size (optional)">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="activation_code" class="col-sm-2 control-label">activation_code</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="activation_code" placeholder="activation_code">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="visibility" class="col-sm-2 control-label">visibility</label>
+    <div class="col-sm-10">
+	    <select class="form-control" id="visibility">
+		  <option>ALWAYS</option>
+		  <option>NEVER</option>
+		  <option>ELIGIBLE</option>
+	  </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="name" placeholder="name">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="desc" class="col-sm-2 control-label">desc</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="desc" placeholder="desc">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inprogress_desc" class="col-sm-2 control-label">inprogress_desc</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inprogress_desc" placeholder="inprogress_desc">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="complete_desc" class="col-sm-2 control-label">complete_desc</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="complete_desc" placeholder="complete_desc">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="long_desc" class="col-sm-2 control-label">long_desc</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="long_desc" placeholder="long_desc">
+    </div>
+  </div>
+
+  <div id="items" class="panel panel-default">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">Items</div>
+	  <div class="panel-body">
+	    <p><a href="#" class="btn btn-primary" id="add_item">Add new item</a></p>
+	  </div>
+
+	  <!-- List group -->
+	<ul class="list-group">
+  	</ul>
+  </div>
+
+  <div id="skills" class="panel panel-default">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">Skill Definitions</div>
+	  <div class="panel-body">
+	    <p><a href="#" class="btn btn-primary" id="add_skills">Add new skills</a></p>
+	  </div>
+
+	  <!-- List group -->
+	<ul class="list-group">
+  	</ul>
+  </div>
+
+
+  <div id="quests" class="panel panel-default">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">Quest Definitions</div>
+	  <div class="panel-body">
+	    <p><a href="#" class="btn btn-primary" id="add_quest">Add new quest</a></p>
+	  </div>
+
+	  <!-- List group -->
+	<ul class="list-group">
+  	</ul>
+  </div>
+
+  <a href="#" class="btn btn-success" id="submit">Generate JSON</a>
+  <br/><br/>
+  <textarea id="gen_json" style="display: none; width: 100%; height: 400px;"></textarea>
+  
+
+</form>
+</div>
+
+
+
+
+
+<!-- Need to define: quest, reward, objective, -->
+
+<div id="templates" class="hide">
+  <div id="item_template">
+	  <div class="form-group">
+	    <label for="internal_name" class="col-sm-2 control-label">internal_name</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="internal_name" placeholder="internal_name">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="internal_desc" class="col-sm-2 control-label">internal_desc</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="internal_desc" placeholder="internal_desc">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="name" class="col-sm-2 control-label">name</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="name" placeholder="name">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="desc" class="col-sm-2 control-label">desc</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="desc" placeholder="desc">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="type" class="col-sm-2 control-label">type</label>
+	    <div class="col-sm-10">
+	      <select class="form-control" id="type">
+			  <option>ITEM</option>
+			  <option>CURRENCY</option>
+	  		</select>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="max_count" class="col-sm-2 control-label">max_count</label>
+	    <div class="col-sm-10">
+	      <input type="number" class="form-control" id="max_count" placeholder="max_count">
+	    </div>
+	  </div>
+  </div>
+
+
+  <div id="activate_skill_template">
+	  <div class="form-group">
+	    <label for="name" class="col-sm-2 control-label">name</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="name" placeholder="name">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="level" class="col-sm-2 control-label">level</label>
+	    <div class="col-sm-10">
+	      <input type="number" class="form-control" id="level" placeholder="level">
+	    </div>
+	  </div>
+  </div>
+
+
+  <div id="skills_template">
+	  <div class="form-group">
+	    <label for="internal_name" class="col-sm-2 control-label">internal_name</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="internal_name" placeholder="internal_name">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="internal_desc" class="col-sm-2 control-label">internal_desc</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="internal_desc" placeholder="internal_desc">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="name" class="col-sm-2 control-label">name</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="name" placeholder="name">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="desc" class="col-sm-2 control-label">desc</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="desc" placeholder="desc">
+	    </div>
+	  </div>
+  </div>
+
+
+  <div id="objective_template">
+	  <div class="form-group">
+	    <label for="desc" class="col-sm-2 control-label">desc</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="desc" placeholder="desc">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="count" class="col-sm-2 control-label">count</label>
+	    <div class="col-sm-10">
+	      <input type="number" class="form-control" id="count" placeholder="count">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="activation_regex" class="col-sm-2 control-label">activation_regex</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="activation_regex" placeholder="activation_regex">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="type" class="col-sm-2 control-label">type</label>
+	    <div class="col-sm-10">
+	      <select class="form-control" id="type">
+			  <option>TEXT</option>
+			  <option>REMOTE</option>
+	  		</select>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="endpoint" class="col-sm-2 control-label">endpoint</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="endpoint" placeholder="endpoint">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="reward" class="col-sm-2 control-label">reward</label>
+	    <div class="col-sm-10">
+	      <input type="reward" class="form-control" id="reward" placeholder="TODO">
+	    </div>
+	  </div>
+  </div>
+
+
+  <div id="quest_template">
+	  <div class="form-group">
+	    <label for="internal_name" class="col-sm-2 control-label">internal_name</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="internal_name" placeholder="internal_name">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="name" class="col-sm-2 control-label">name</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="name" placeholder="name">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="start_text" class="col-sm-2 control-label">start_text</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="start_text" placeholder="start_text">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="success_text" class="col-sm-2 control-label">success_text</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="success_text" placeholder="success_text">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="fail_text" class="col-sm-2 control-label">fail_text</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="fail_text" placeholder="fail_text">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="summary_text" class="col-sm-2 control-label">summary_text</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="summary_text" placeholder="summary_text">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="first_reward" class="col-sm-2 control-label">first_reward</label>
+	    <div class="col-sm-10">
+	      <input type="first_reward" class="form-control" id="first_reward" placeholder="TODO">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="reward" class="col-sm-2 control-label">reward</label>
+	    <div class="col-sm-10">
+	      <input type="reward" class="form-control" id="reward" placeholder="TODO">
+	    </div>
+	  </div>
+	  
+	  <div class="form-group">
+	    <label for="repeat_count" class="col-sm-2 control-label">repeat_count</label>
+	    <div class="col-sm-10">
+	      <input type="number" class="form-control" id="repeat_count" placeholder="repeat_count">
+	    </div>
+	  </div>
+	  
+	  <div id="objectives" class="panel panel-default">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading">Objectives</div>
+		  <div class="panel-body">
+		    <p><a href="#" class="btn btn-primary add_objective">Add new objective</a></p>
+		  </div>
+
+		  <!-- List group -->
+		<ul class="list-group">
+	  	</ul>
+	  </div>
+  </div>
+
+</div>
+
+<script>
+
+function removeClicks() {
+	$('#add_item').off('click');
+	$('#add_skill').off('click');
+	$('#add_skills').off('click');
+	$('#add_quest').off('click');
+	$('.add_objective').off('click');
+};
+
+function registerClicks() {
+	removeClicks();
+
+	$('#add_item').click(function(e) {
+		e.preventDefault();
+		var copy = $('#item_template').html();
+		var item = $('<li>');
+		item.addClass('list-group-item');
+		item.append(copy);
+		$('#items ul').append(item);
+	});
+	$('#add_activate_skill').click(function(e) {
+		e.preventDefault();
+		var copy = $('#activate_skill_template').html();
+		var item = $('<li>');
+		item.addClass('list-group-item');
+		item.append(copy);
+		$('#activate_skills ul').append(item);
+	});
+	$('#add_skills').click(function(e) {
+		e.preventDefault();
+		var copy = $('#skills_template').html();
+		var item = $('<li>');
+		item.addClass('list-group-item');
+		item.append(copy);
+		$('#skills ul').append(item);
+	});
+	$('#add_quest').click(function(e) {
+		e.preventDefault();
+		var copy = $('#quest_template').html();
+		var item = $('<li>');
+		item.addClass('list-group-item');
+		item.append(copy);
+		$('#quests > ul').append(item);
+		registerClicks();
+	});
+	$('.add_objective').click(function(e) {
+		e.preventDefault();
+		var copy = $('#objective_template').html();
+		var item = $('<li>');
+		item.addClass('list-group-item');
+		item.append(copy);
+		$(this).parent().parent().parent().find('ul').append(item);
+	});
+};
+
+registerClicks();
+
+$('#submit').click(function(e) {
+	e.preventDefault();
+	var gen = {};
+	gen.internal_name = $('#internal_name').val();
+	gen.internal_desc = $('#internal_desc').val();
+	gen.version = $('#version').val();
+	gen.author = $('#author').val();
+	gen.author_site = $('#author_site').val();
+	gen.author_email = $('#author_email').val();
+	gen.author_public = $('#author_public').is(':checked');
+	gen.author_site_public = $('#author_site_public').is(':checked');
+	gen.author_email_public = $('#author_email_public').is(':checked');	
+	gen.start_date = $('#start_date').val();
+	gen.end_date = $('#end_date').val();
+	gen.activate_skill = [];
+	$.each($("#activate_skills li"), function(i,v) {
+		var skill = {};
+		skill.name = $(v).find("#name").val();
+		skill.level = $(v).find("#level").val();
+		gen.activate_skill.push(skill);
+	});
+	gen.group_size = $('#group_size').val();
+	gen.activation_code = $('#activation_code').val();
+	gen.visibility = $('#visibility').val();
+	gen.name = $('#name').val();
+	gen.desc = $('#desc').val();
+	gen.inprogress_desc = $('#inprogress_desc').val();
+	gen.complete_desc = $('#complete_desc').val();
+	gen.long_desc = $('#long_desc').val();
+	gen.items = [];
+	$.each($("#items li"), function(i,v) {
+		var item = {};
+		item.internal_name = $(v).find("#internal_name").val();
+		item.internal_desc = $(v).find("#internal_desc").val();
+		item.name = $(v).find("#name").val();
+		item.desc = $(v).find("#desc").val();
+		item.type = $(v).find("#type").val();
+		item.max_count = $(v).find("#max_count").val();
+		gen.items.push(item);
+	});
+	gen.skills = [];
+	$.each($("#skills li"), function(i,v) {
+		var skill = {};
+		skill.internal_name = $(v).find("#internal_name").val();
+		skill.internal_desc = $(v).find("#internal_desc").val();
+		skill.name = $(v).find("#name").val();
+		skill.desc = $(v).find("#desc").val();
+		gen.skills.push(skill);
+	});
+	gen.quests = [];
+	$.each($("#quests > ul > li"), function(i,v) {
+		var quest = {};
+		quest.internal_name = $(v).find("#internal_name").val();
+		quest.name = $(v).find("#name").val();
+		quest.start_text = $(v).find("#start_text").val();
+		quest.success_text = $(v).find("#success_text").val();
+		quest.fail_text = $(v).find("#fail_text").val();
+		quest.summary_text = $(v).find("#summary_text").val();
+		quest.repeat_count = $(v).find("#repeat_count").val();
+		quest.objectives = [];
+		$.each($(v).find("li"), function(i,v) {
+			var objective = {};
+			objective.desc = $(v).find("#desc").val();
+			objective.count = $(v).find("#count").val();
+			objective.activation_regex = $(v).find("#activation_regex").val();
+			objective.endpoint = $(v).find("#endpoint").val();
+			objective.reward = $(v).find("#reward").val();
+			quest.objectives.push(objective);
+		});
+		gen.quests.push(quest);
+	});
+	$('#gen_json').val(JSON.stringify(gen, null, " "));
+	$('#gen_json').show();
+});
+
+</script>
+
+</body>
+
 </html>
